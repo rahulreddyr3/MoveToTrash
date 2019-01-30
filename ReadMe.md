@@ -1,4 +1,4 @@
-# MoVe To Trash
+# MoVe_to_Trash
 A command line tool for replacing "Move to trash" option in mac. It can move files and directories from any where in mac trash.
 It appends the file/folder name with a number if an other file/folder with same name exists in the destination.
 It can also be used to move files/folders to other destination than trash.
