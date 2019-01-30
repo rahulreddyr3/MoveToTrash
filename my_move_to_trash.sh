@@ -8,7 +8,6 @@ fi
 
 if [ -f $1 ]
 then
-    echo "$1 is a file"
     actual_filename=$1;
     new_filename="${actual_filename%%.*}";
     extension="${actual_filename##*.}";
@@ -28,7 +27,6 @@ then
     fi
 elif [ -d $1 ]
 then
-    echo "$1 is a directory"
     actual_directory_name=$1;
     if [ -d "$dest_dir/$actual_directory_name" ]; then
         increment=1;
