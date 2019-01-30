@@ -17,12 +17,12 @@ then
             (( increment++ ))
         done
         mv $1 "$dest_dir/$new_filename-$increment.$extension"
-        echo "file $1 moved to trash with name $new_filename-$increment.$extension"
+        echo "file $1 moved to $dest_dir with name $new_filename-$increment.$extension"
     else
         if mv $1 $dest_dir; then
-            echo "file $1 moved to trash with name $actual_filename"
+            echo "file $1 moved to $dest_dir with name $actual_filename"
         else
-            echo "error happened while moving the file $1 to trash"
+            echo "error happened while moving the file $1 to $dest_dir"
         fi
     fi
 elif [ -d $1 ]
@@ -34,12 +34,12 @@ then
             (( increment++ ))
         done
         mv $1 "$dest_dir/$actual_directory_name-$increment"
-        echo "folder $1 moved to trash with name $actual_directory_name-$increment"
+        echo "folder $1 moved to $dest_dir with name $actual_directory_name-$increment"
     else
         if mv $1 "$dest_dir/$actual_directory_name" ; then
-            echo "folder $1 moved to trash with name $actual_directory_name"
+            echo "folder $1 moved to $dest_dir with name $actual_directory_name"
         else
-            echo "error happened while moving the folder $1 to trash"
+            echo "error happened while moving the folder $1 to $dest_dir"
         fi
     fi
 else
