@@ -29,6 +29,21 @@ then
 elif [ -d $1 ]
 then
     echo "$1 is a directory"
+    actual_directory_name=$1;
+    if [ -d "$dest_dir/$actual_directory_name" ]; then
+        increment=1;
+        while [[ -e "$dest_dir/$actual_directory_name-$increment" ]]; do
+            (( increment++ ))
+        done
+        mv $1 "$dest_dir/$actual_directory_name-$increment"
+        echo "folder $1 moved to trash with name $actual_directory_name-$increment"
+    else
+        if mv $1 "$dest_dir/$actual_directory_name" ; then
+            echo "folder $1 moved to trash with name $actual_directory_name"
+        else
+            echo "error happened while moving the folder $1 to trash"
+        fi
+    fi
 else
     echo "$1 is neither a File nor Directory"
     exit 1;
