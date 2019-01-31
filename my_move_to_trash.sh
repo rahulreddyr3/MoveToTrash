@@ -1,12 +1,12 @@
 #!/bin/bash
 dest_dir=${2:-"$HOME/.Trash"}
-if [ ! -d $2 ];
+if [ ! -d "$2" ];
 then
     echo "$2 is not an existing Directory"
     exit 1;
 fi
 
-if [ -f $1 ]
+if [ -f "$1" ]
 then
     actual_filename=$1;
     new_filename="${actual_filename%%.*}";
@@ -19,13 +19,13 @@ then
         mv $1 "$dest_dir/$new_filename-$increment.$extension"
         echo "file $1 moved to $dest_dir with name $new_filename-$increment.$extension"
     else
-        if mv $1 $dest_dir; then
+        if mv "$1" "$dest_dir"; then
             echo "file $1 moved to $dest_dir with name $actual_filename"
         else
             echo "error happened while moving the file $1 to $dest_dir"
         fi
     fi
-elif [ -d $1 ]
+elif [ -d "$1" ]
 then
     actual_directory_name=$1;
     if [ -d "$dest_dir/$actual_directory_name" ]; then
@@ -33,10 +33,10 @@ then
         while [[ -e "$dest_dir/$actual_directory_name-$increment" ]]; do
             (( increment++ ))
         done
-        mv $1 "$dest_dir/$actual_directory_name-$increment"
+        mv "$1" "$dest_dir/$actual_directory_name-$increment"
         echo "folder $1 moved to $dest_dir with name $actual_directory_name-$increment"
     else
-        if mv $1 "$dest_dir/$actual_directory_name" ; then
+        if mv "$1" "$dest_dir/$actual_directory_name" ; then
             echo "folder $1 moved to $dest_dir with name $actual_directory_name"
         else
             echo "error happened while moving the folder $1 to $dest_dir"
