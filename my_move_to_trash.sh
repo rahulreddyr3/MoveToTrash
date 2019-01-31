@@ -1,8 +1,8 @@
 #!/bin/bash
 dest_dir=${2:-"$HOME/.Trash"}
-if [ ! -d "$2" ];
+if [ ! -d "$dest_dir" ];
 then
-    echo "$2 is not an existing Directory"
+    echo "$dest_dir is not an existing Directory"
     exit 1;
 fi
 
@@ -16,7 +16,7 @@ then
         while [[ -e "$dest_dir/$new_filename-$increment.$extension" ]]; do
             (( increment++ ))
         done
-        mv $1 "$dest_dir/$new_filename-$increment.$extension"
+        mv "$1" "$dest_dir/$new_filename-$increment.$extension"
         echo "file $1 moved to $dest_dir with name $new_filename-$increment.$extension"
     else
         if mv "$1" "$dest_dir"; then
