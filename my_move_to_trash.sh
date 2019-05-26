@@ -9,7 +9,6 @@ fi
 if [ -f "$1" ]
 then
     actual_filename_without_path=${1##*/}
-    echo $actual_filename_without_path
     actual_filename_without_path_and_extension="${actual_filename_without_path%%.*}"
     extension="${actual_filename_without_path##*.}"
     if [ -e "$dest_dir/$actual_filename_without_path" ]; then
@@ -29,7 +28,6 @@ then
 elif [ -d "$1" ]
 then
     actual_directory_without_path=${1##*/}
-    echo $actual_directory_without_path
     if [ -d "$dest_dir/$actual_directory_without_path" ]; then
         increment=1;
         while [[ -e "$dest_dir/$actual_directory_without_path-$increment" ]]; do
