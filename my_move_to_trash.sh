@@ -9,15 +9,13 @@ fi
 if [ -f "$1" ]
 then
     actual_filename_without_path=${1##*/}
-    actual_filename_without_path_and_extension="${actual_filename_without_path%%.*}"
-    extension="${actual_filename_without_path##*.}"
     if [ -e "$dest_dir/$actual_filename_without_path" ]; then
         increment=1
-        while [[ -e "$dest_dir/$actual_filename_without_path_and_extension-$increment.$extension" ]]; do
+        while [[ -e "$dest_dir/$actual_filename_without_path-$increment" ]]; do
             (( increment++ ))
         done
-        mv "$1" "$dest_dir/$actual_filename_without_path_and_extension-$increment.$extension"
-        echo "file $1 moved to $dest_dir with name $actual_filename_without_path_and_extension-$increment.$extension"
+        mv "$1" "$dest_dir/$actual_filename_without_path-$increment"
+        echo "file $1 moved to $dest_dir with name $actual_filename_without_path-$increment"
     else
         if mv "$1" "$dest_dir"; then
             echo "file $1 moved to $dest_dir with name $actual_filename_without_path"
